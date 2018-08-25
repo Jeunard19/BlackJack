@@ -10,17 +10,23 @@ public class BlackJackPlayer {
 	
 	public String produceUserInput() {
 		
-		Scanner input = new Scanner(System.in);
+		System.out.println("\n");
+		System.out.print("Input: ");
+		Scanner scanner = new Scanner(System.in);
+		String input=scanner.nextLine();
 		 if (Arrays.asList(this.inputoptions).contains(input)) {
-		return input.nextLine().toLowerCase();
+		return input
+				.toLowerCase();
 	} else {
-		 System.out.println(input + " is not allowed to be given as an answer.");
-		 return null;
+		 System.out.println(input + " is not a valid input.\nTry again. (Valid inputs are: q - quit game, k - startgame/keep playing"
+		 		+ " and p - pass.)");
+		 return "q";
 	}
 		
 	}
 	public BlackJackPlayer() {
 		this.cards= new ArrayList();
+		
 
 	}
 	

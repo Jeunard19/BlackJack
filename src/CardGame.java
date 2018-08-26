@@ -1,15 +1,15 @@
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class CardGame {
-	
-	
 	Deck newdeck = new Deck();
 	ArrayList<Object> cards = newdeck.cards;
 	ArrayList<String> aceslist = new ArrayList();
 	BlackJackPlayer player = new BlackJackPlayer();
 	boolean firsthand= false;
 	boolean continueGame =true;
+	int seconds = LocalDateTime.now().getSecond();
 	public void shuffleDeck() {
 		Collections.shuffle(this.cards);
 	}
@@ -107,8 +107,13 @@ public class CardGame {
 	
 	public void processPlayerInput() {
 		String input=this.player.produceUserInput();
+		if( LocalDateTime.now().getSecond()>this.seconds+10) {
+			System.out.println("You have been kicked for idling.");
+			System.exit(0);
+		}
+	
 
-		switch  (input) {
+		switch  (input.toLowerCase()) {
 			default:
 				 System.out.println("This is not a valid input.\nTry again. (Valid inputs are: q - quit game, k - startgame/keep playing"
 					 		+ " and p - pass.)");

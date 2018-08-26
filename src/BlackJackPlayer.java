@@ -3,7 +3,6 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class BlackJackPlayer {
-	public int chips;
 	public ArrayList<Card> cards;
 
 	public int points;
@@ -14,17 +13,11 @@ public class BlackJackPlayer {
 		System.out.print("Input: ");
 		Scanner scanner = new Scanner(System.in);
 		String input=scanner.nextLine();
-
-		return input;
-	
-		
+		return input;	
 	}
+	
+	
 	public BlackJackPlayer() {
 		this.cards= new ArrayList();
-		
-
 	}
-	
-
-
 }

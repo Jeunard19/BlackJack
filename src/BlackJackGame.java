@@ -5,13 +5,7 @@ import java.util.Collections;
 
 public class BlackJackGame {
 	public static void main(String [] args) {
-		
 		CardGame newgame =new CardGame();
 		newgame.startPlayingBlackJack();
-
-
-		
 	}
-	
-
 }

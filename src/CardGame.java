@@ -35,31 +35,27 @@ public class CardGame {
 	}
 	
 	public void dealCards() {
-		boolean ace=false;
 		Card card = (Card) this.cards.get(0);
 		this.player.cards.add(card);
 		this.cards.remove(0);
 		this.player.points+=card.value;
 		if(this.player.points>21) {
 			boolean Ace=false;
-			//for(Card i: this.player.cards) {
 				if(card.id.contains("Ace")&!this.aceslist.contains(card.id)) {
 					card.value=1;
 					Ace = true;
 					this.aceslist.add(card.id);
-					//showPlayershand();
-					
-			}//}
+					}
 			
 			if(Ace==false) {
 			showPlayershand();
-			System.out.println("You've accumelated a score over 21 ("+this.player.points+"), you lose.");
+			System.out.println("You've accumulated a score over 21 ("+this.player.points+"), you lose.");
 			System.exit(0);
 			} else {
 				this.player.points-=10;
 				Ace=false;
 			;
-
+			    System.out.println("\nNew card: ");
 				System.out.println("-- "+card.id);
 				System.out.println("\nScore: "+this.player.points);
 				processPlayerInput();
@@ -82,11 +78,12 @@ public class CardGame {
 		
 		else {
 			if(this.firsthand==true) {	
-				//showPlayershand();
+				System.out.println("\nNew card: ");
 				System.out.println("-- "+card.id);
 				System.out.println("\nScore: "+this.player.points);
 			this.processPlayerInput();
 		} else {
+			
 			System.out.println("-- "+card.id);
 			
 			
@@ -96,13 +93,10 @@ public class CardGame {
 	}
 	
 	public void dealFirstrounds() {
-		
 		for(int i = 0;i<2;i++) {
-			
-			dealCards();
+				dealCards();
 		}
 		System.out.println("\nScore: "+this.player.points);
-		
 	}
 	
 	public void processPlayerInput() {
@@ -117,7 +111,9 @@ public class CardGame {
 			default:
 				 System.out.println("This is not a valid input.\nTry again. (Valid inputs are: q - quit game, k - startgame/keep playing"
 					 		+ " and p - pass.)");
+				 this.seconds=LocalDateTime.now().getSecond();
 				processPlayerInput();
+				break;
 			case "p":
 				System.out.println("You've decided too pass.\nYour score is "+this.player.points);
 
@@ -130,7 +126,9 @@ public class CardGame {
 			break;
 			case "k":
 				this.firsthand=true;
+				this.seconds=LocalDateTime.now().getSecond();
 				dealCards();
+				 
 				break;
 		}} 
 		
